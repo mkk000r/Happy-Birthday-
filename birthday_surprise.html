@@ -1,0 +1,182 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Happy Birthday Payal's Sister</title>  
+  <style>  
+    body, html {  
+      margin: 0;  
+      padding: 0;  
+      height: 100%;  
+      overflow: hidden;  
+      background: black;  
+      color: #00FF00;  
+      font-family: monospace;  
+    }  
+  
+    .terminal {  
+      width: 100%;  
+      height: 100%;  
+      padding: 20px;  
+      box-sizing: border-box;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      font-size: 24px;  
+      white-space: pre-wrap;  
+    }  
+  
+    .message {  
+      position: absolute;  
+      top: 50%;  
+      left: 50%;  
+      transform: translate(-50%, -50%);  
+      text-align: center;  
+      opacity: 0;  
+      transition: opacity 2s ease;  
+      color: #fff;  
+      font-family: 'Comic Sans MS', cursive, sans-serif;  
+      max-width: 90%;  
+    }  
+  
+    .message h1 {  
+      font-size: 50px;  
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);  
+      -webkit-background-clip: text;  
+      -webkit-text-fill-color: transparent;  
+      margin: 10px 0;  
+    }  
+  
+    .message p {  
+      font-size: 22px;  
+      color: #ffebcd;  
+      margin-top: 10px;  
+    }  
+  
+    .message img {  
+      max-width: 300px;  
+      border-radius: 15px;  
+      margin-top: 20px;  
+      box-shadow: 0 0 20px #fff;  
+    }  
+  
+    .funny {  
+      margin-top: 20px;  
+      color: #ffff00;  
+      font-weight: bold;  
+      font-size: 20px;  
+      text-shadow: 1px 1px 3px #000;  
+    }  
+  
+    .balloons {  
+      position: absolute;  
+      bottom: -150px;  
+      width: 100%;  
+      height: 100%;  
+      overflow: hidden;  
+      z-index: -1;  
+    }  
+  
+    .balloon {  
+      position: absolute;  
+      bottom: -200px;  
+      width: 60px;  
+      height: 80px;  
+      border-radius: 50% 50% 50% 50%;  
+      background: radial-gradient(circle, #fff, #f06d9d);  
+      animation: floatUp 6s linear infinite;  
+    }  
+  
+    @keyframes floatUp {  
+      0% {  
+        transform: translateY(0) rotate(0deg);  
+        opacity: 1;  
+      }  
+      100% {  
+        transform: translateY(-120vh) rotate(360deg);  
+        opacity: 0;  
+      }  
+    }  
+  
+    /* Fireworks CSS */  
+    .firework {  
+      position: absolute;  
+      width: 5px;  
+      height: 5px;  
+      background: #fff;  
+      border-radius: 50%;  
+      animation: explode 1s ease-out forwards;  
+    }  
+  
+    @keyframes explode {  
+      0% { transform: scale(0.5) translateY(0); opacity: 1; }  
+      100% { transform: scale(5) translateY(-300px); opacity: 0; }  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div class="terminal" id="terminal"></div>  
+  
+  <div class="message" id="msg">  
+    <h1> Happy Birthday Payal's Sister! </h1>  
+    <p>May your day be as wonderful and bright as you are!</p>  
+    <img src="payal_sister.jpg" alt="Payal's Sister" />  
+    <div class="funny">  
+       cake  ,  balloons code  delete  !   
+    </div>  
+  </div>  
+  
+  <div class="balloons">  
+    <div class="balloon" style="left: 10%; background: #ff4b2b;"></div>  
+    <div class="balloon" style="left: 30%; background: #ff416c;"></div>  
+    <div class="balloon" style="left: 50%; background: #ff6ec4;"></div>  
+    <div class="balloon" style="left: 70%; background: #42e695;"></div>  
+    <div class="balloon" style="left: 90%; background: #fbb03b;"></div>  
+  </div>  
+  
+  <script>  
+    const terminal = document.getElementById("terminal");  
+    const message = document.getElementById("msg");  
+    const surpriseText = "Loading surprise...\nInitializing...\nDecrypting birthday message...\nAccess granted!\n";  
+    let index = 0;  
+  
+    function typeEffect() {  
+      if (index < surpriseText.length) {  
+        terminal.textContent += surpriseText[index];  
+        index++;  
+        setTimeout(typeEffect, 80);  
+      } else {  
+        showMessage();  
+      }  
+    }  
+  
+    function showMessage() {  
+      terminal.style.display = "none";  
+      message.style.opacity = 1;  
+      launchFireworks();  
+    }  
+  
+    window.onload = typeEffect;  
+  
+    function launchFireworks() {  
+      for (let i = 0; i < 50; i++) {  
+        const fw = document.createElement('div');  
+        fw.className = 'firework';  
+        fw.style.left = Math.random() * window.innerWidth + 'px';  
+        fw.style.top = Math.random() * window.innerHeight + 'px';  
+        fw.style.background = getRandomColor();  
+        document.body.appendChild(fw);  
+        setTimeout(() => {  
+          fw.remove();  
+        }, 1000);  
+      }  
+    }  
+  
+    function getRandomColor() {  
+      const colors = ['#ff4b2b', '#ff416c', '#ff6ec4', '#42e695', '#fbb03b', '#ffffff'];  
+      return colors[Math.floor(Math.random() * colors.length)];  
+    }  
+  </script>  
+</body>  
+</html>
